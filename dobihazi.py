@@ -216,6 +216,165 @@ def feladat_8(a, b, c, d, x):
     else:
         print("a 3 parameteru kifejezes erteke", 4)
 
+def feladat_10(kezdo,veg):
+    #■ A szökőév osztható 4-gyel és nem osztható 100-zal, vagy osztható 400-zal.
+    szokoev=0
+    for i in range(kezdo,veg+1):
+        if i%4==0 and i%100!=0 or i%400==0:
+            szokoev=szokoev+1
+    return szokoev
+
+def feladat_15(a,b):
+    hanyados=0
+    while a>=b:
+        hanyados += 1
+        a=a-b
+    return hanyados
+
+def feladat_21(n):
+    masolat = n
+    uj_szam = 0
+
+    while n != 0:
+        szj = n % 10
+        uj_szam = uj_szam * 10 + szj
+        n = n // 10
+    return uj_szam
+
+def feladat_24():
+    het=0
+    tizenharom=0
+    k=1
+    while k!=0:
+        k=int(input("Adj egy szamot: "))
+        if k%7==5:
+            het+=1
+        elif k%13==7:
+            tizenharom+=1
+    print("hettel: {0}  tizenharommal: {1}".format(het,tizenharom) )
+
+
+def feladat_26():
+    k=1
+    pozitiv=0
+    negativ=0
+    ossz=0
+    while k!=0:
+        k=int(input("adjon meg egy szamot:"))
+        if k<0:
+            negativ+=1
+        elif k>0:
+            pozitiv+=1
+        ossz=ossz+k
+        print(ossz)
+    print("negativ: {0}, pozitiv: {1}. ".format(negativ,pozitiv))
+
+def feladat_32():
+    k=7
+    a=int(input("adja meg az a szamot:"))
+    b=int(input("adja meg a b szamot:"))
+    for i in range (a,b):
+        if i%k==0:
+            print(i,end=" ")
+
+
+
+
+def feladat_31(n):
+    k=n//2
+
+    for i in range(1,k+1):
+        if n%i==0:
+            print(i,end=" ")
+    print(n)
+    print("\n")
+
+def feladat_9():
+    a=float(input("adja meg az a erteket: "))
+    b=float(input("adja meg az b erteket: "))
+    c=float(input("adja meg az c erteket: "))
+    if a ==0:
+        print("Ez nem masodfoku egyenlet, a erteke nem lehet 0.")
+    else:
+        d=b*b-4*a*c
+        print("d erteke:",d)
+        if d<0:
+            print("Nincs valos megoldas.")
+        if d==0:
+            print("egy megoldas van: {0:8}.2f".format(-b/2/a))
+        if d>0:
+            gyd=math.sqrt(d)
+            print("ket megoldas van: {0:8:2.f} {1:8:2f}".format(((-b+gyd)/2/a)),((-b-gyd)/2/a))
+
+def feladat_23():
+    n=int(input("adja meg az n szamot:"))
+    if n<=0:
+        print("ez nem pozitiv termeszetes szam")
+    else:
+            sum=0
+
+            for i in range(1,n):
+                if n%i==0:
+                    sum+=i
+
+            print()
+            print("osztok osszege: ",sum)
+            print()
+
+            if sum==n:
+                print(n,"tokeletes szam")
+            else:
+                print(n,"nem tokeletes szam")
+
+def feladat_38():
+    sum=0
+    szam=str(input("adja meg a szamot: "))
+    keresettelem=(str(input("adja meg a keresett szamjegyet: ")))
+    for i in range(len(szam)):
+        if szam[i]==keresettelem:
+            sum=sum+1
+    print("elofordulas szama:",sum)
+
+
+def feladat_39():
+    for i in range(1000):
+        szam=i
+        ossz=0
+        sz=szam%10
+        kob=sz*sz*sz
+        ossz+=kob
+        szam=szam/10
+        if ossz==i:
+            print(i,end=" ")
+
+def feladat_37():
+    t=70
+    n=int(input("adja meg az n szamot"))
+
+
+    a = 1
+    b = 1
+    if t == 1:
+        print(a, end=" ")
+    elif t == 2:
+        print(a, b, end=" ")
+    else:
+        c = a + b
+        #print(a, b, c, end=" ")
+        k = 3
+        while k < t:
+            a = b
+            b = c
+            c = a + b
+            #print(c, end=" ")
+            if c>n:
+                print("\n a legkisebb ilyen fibo szam: ",c)
+                break
+            k = k + 1
+        print()
+
+
+
 
 def main():
     feladat_1(51, 33)  # feladat_1
@@ -234,6 +393,19 @@ def main():
     feladat_20(9)
     feladat_4(5, 2, -11)
     feladat_8(1, 2, 3, 4, 6)
+
+    print( feladat_10(2000,2004))
+    print(feladat_15(20,3))
+    print(feladat_21(123456789))
+    feladat_24()
+    feladat_26()
+    feladat_32()
+    feladat_31(100)
+    feladat_9()
+    feladat_23()
+    feladat_38()
+    feladat_39()
+    feladat_37()
 
 
 if __name__ == '__main__':
