@@ -373,6 +373,45 @@ def feladat_37():
             k = k + 1
         print()
 
+# 2. pullrequest
+
+def feladat_22(x,n):
+    k=0
+    k=pow(x,n)
+    print("a kifejezes erteke:  ",k)
+
+def feladat_28(n):
+    i=1
+    while True:
+        if i*i>=n:
+            print((i-1)*(i-1))
+            break
+        i+=1
+
+def feladat_33(n):
+    #osztokszama=0
+    max=0
+
+    for i in range(1,n+1):
+        osztokszama=0
+
+        for j in range(1,n+1):
+
+            if i%j==0:
+                osztokszama+=1
+
+                if osztokszama>=max:
+
+                    max=osztokszama
+                    szam=i
+
+
+
+
+        #print(i,osztokszama)
+    print("a legtöbb osztúju szam:{0} illetve osztóinak a száma: {1} ".format(szam,max))
+
+
 
 
 
@@ -406,7 +445,10 @@ def main():
     feladat_38()
     feladat_39()
     feladat_37()
-
+ #2. pull reguest: ___
+    feladat_22(2, 3)
+    feladat_28(100)
+    feladat_33(16)
 
 if __name__ == '__main__':
     main()
