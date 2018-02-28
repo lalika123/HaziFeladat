@@ -412,6 +412,88 @@ def feladat_33(n):
     print("a legtöbb osztúju szam:{0} illetve osztóinak a száma: {1} ".format(szam,max))
 
 
+#3. pullrequest
+def feladat_36(szam):
+    kifli=0
+    n=50
+    print("feladat_36:  ", end=" ")
+    a = 1
+    b = 1
+    if szam==1:
+        print("a szam megegyezik a legkisebb fibo szammal, igy nincs nala kisebb.")
+    elif szam==2:
+        print("a szamnal 2db kisebb fibo szam van")
+    if szam>2:
+        if n == 1:
+            print(a, end=" ")
+        elif n == 2:
+           print(a, b, end=" ")
+        else:
+            kifli=3
+            c = a + b
+            #print(a, b, c, end=" ")
+            k = 3
+            while k < n:
+                a = b
+                b = c
+                c = a + b
+
+                if c<szam:
+                    kifli+=1
+                #print(c, end=" ")
+                k = k + 1
+            print("\n {0}db kisebb fibo szam van az adott szamnal".format(kifli))
+            print()
+def feladat_2():
+    a=(int(input("adja meg az a szamot:  ")))
+    b=(int(input("adja meg az b szamot:  ")))
+    c=(int(input("adja meg az c szamot:  ")))
+    utolso=max(a,b,c)
+    elso=min(a,b,c)
+    kozepso=(a+b+c)-elso-utolso
+    print(elso,kozepso,utolso)
+def feladat_30(datum):
+    szam=0
+    datum=datum.split(".")
+    #print(datum[0])
+    ev=int(datum[0])
+    napok=int(datum[2])
+    honap=int(datum[1])
+    februar=28
+
+
+    if  ev%4==0 and ev%100!=0 or ev%400==0:
+        februar=29
+        print("szokoevrol van szo! ")
+
+    napok=int(napok)
+    if honap==1:
+        szam=napok
+
+    elif honap==2:
+        szam=31+napok
+    elif honap==3:
+        szam=31+februar+napok
+    elif honap==4:
+        szam=31+februar+31+napok
+    elif honap==5:
+        szam=31+februar+31+30+napok
+    elif honap==6:
+        szam=31+februar+61+31+napok
+    elif honap==7:
+        szam=31+februar+61+31+30+napok
+    elif honap==8:
+        szam= szam=31+februar+61+31+30+31+napok
+    elif honap==9:
+        szam = 31 + februar + 61 + 31 + 30 +31+31+napok
+    elif honap==10:
+        szam = 31 + februar + 61 + 31 + 30 +62+30+napok
+    elif honap==11:
+        szam= szam=31+februar+61+31+30+62+30+31+napok
+    elif honap==12:
+        szam=szam=31+februar+61+31+30+62+30+31+napok+30
+
+    print("az ev {}. napja ".format(szam))
 
 
 
@@ -449,7 +531,10 @@ def main():
     feladat_22(2, 3)
     feladat_28(100)
     feladat_33(16)
-
+#3. pullrequestt
+    feladat_36(500)
+    feladat_30("2000.12.31")
+    feladat_2()
 if __name__ == '__main__':
     main()
 
