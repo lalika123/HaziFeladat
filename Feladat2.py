@@ -356,6 +356,58 @@ def feladat_22():
         fajl.close()
         fajl2.close()
 
+# 3. pullrequest
+def feladat_18():
+    try:
+        egyik=""
+        masik=""
+        elsopont=0
+        masikpont=0
+        k=0
+        gyoztes=""
+
+        fajl=open("be.txt",mode="r")
+        for sor in fajl:
+            sor=sor.split(" ")
+            if k==1:
+                break
+            egyik=sor[0]
+            masik=sor[2]
+        #print("egyik es a masik_______",egyik,masik)
+        fajl.close()
+        fajl=open("be.txt",mode="r")
+        for sor in fajl:
+            if sor =="":
+                break
+            sor=sor.strip()
+            sor=sor.split(" ")
+            sor[3]=sor[3].split(":")
+            #print(sor[3])
+            sor[3][0]=int(sor[3][0])
+            sor[3][1]=int(sor[3][1])
+
+            if egyik==sor[0] and masik==sor[2]:
+
+                elsopont+=sor[3][0]
+                masikpont+=sor[3][1]
+               # print(elsopont,masikpont,"philadelphia   toronto")
+            elif masik==sor[0] and egyik==sor[2]:
+
+                elsopont += sor[3][1]
+                masikpont += sor[3][0]
+                #print(elsopont,masikpont)
+
+            if elsopont>masikpont:
+                gyoztes=sor[0]
+            elif elsopont<masikpont:
+                gyoztes=sor[2]
+        print("a donto gyoztese a :",gyoztes)
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl.close()
 
 
 
@@ -385,8 +437,10 @@ def main():
     feladat_21()
     feladat_22()
 
-
+#3. pullrequest
+    feladat_18()
 
 if __name__ == '__main__':
     main()
+
 
