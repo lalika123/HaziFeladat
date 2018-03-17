@@ -409,7 +409,50 @@ def feladat_18():
     finally:
         fajl.close()
 
+#4.pull
+def feladat_5_osztokszama(szam):
+    db=2
+    for i in range(2, szam//2+1):
+        if szam%i==0:
+            db+=1
+    return db
+def feladat_5(n):
+    max=1
+    for i in range(2,n+1):
+        if max <feladat_5_osztokszama(i):
+            max=feladat_5_osztokszama(i)
+            print(i)
 
+def feladat_23():
+    try:
+        allapot="Yes"
+        elozo=0
+        fajl=open("be.txt",mode="r")
+        for sor in fajl:
+            if sor == "":
+                break
+            sor=sor.strip()
+            sor=sor.split(" ")
+            ertek=int(sor[1])
+            #print(ertek)
+            if ertek<elozo:
+                allapot="No"
+                break
+            elozo=ertek
+
+
+        print(allapot)
+
+
+
+
+
+    except OSError as e:
+        print(e)
+    #except Exception as e:
+       # print(e)
+    finally:
+        fajl.close()
 
 
 
@@ -439,6 +482,11 @@ def main():
 
 #3. pullrequest
     feladat_18()
+
+#4. pull
+
+    feladat_5(101)
+    feladat_23()
 
 if __name__ == '__main__':
     main()
