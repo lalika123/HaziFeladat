@@ -454,7 +454,141 @@ def feladat_23():
     finally:
         fajl.close()
 
+#5. pull
+def feladat_24():
+    try:
+        fajl=open("be.txt",mode="r")
+        li=[]
+        for sor in fajl:
+            if sor =="":
+                break
+            sor=sor.strip()
+            sor=sor.split()
+            li.append(sor)
 
+        #print(li)
+        teki=0
+        for i in li[1]:
+            i=int(i)
+            teki+=i
+        #print(teki)
+        csiga=0
+        for i in li[2]:
+            i=int(i)
+            csiga+=i
+        #print(csiga)
+
+        hossz=max(csiga,teki)*2
+        #print("hossz: ",hossz)
+        if teki>csiga:
+            print(hossz)
+            print("TURTLE")
+        elif teki<csiga:
+            print(hossz)
+            print("SNAIL")
+        elif teki==csiga:
+            print(hossz)
+            print("DRAW")
+
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl.close()
+
+def feladat_25():
+    try:
+        fajl=open("be.txt",mode="r")
+        li=[]
+        angol=[]
+        magyar=[]
+        for sor in fajl:
+            if sor=="":
+                break
+            sor=sor.strip()
+            sor=sor.split(":")
+            li.append(sor)
+        ertek=li[0]
+        nincsbenne=0
+        for i in range(1,len(li)):
+            angol.append(li[i][0])
+        #print(angol)
+
+        for i in range(1,len(li)):
+            magyar.append(li[i][1])
+        #print(magyar)
+
+
+        angoltmp=[]
+        magyartmp=[]
+        for i in angol:
+            if i not in angoltmp:
+                angoltmp.append(i)
+        #print(angoltmp)
+
+        for i in magyar:
+            if i not in magyartmp:
+                magyartmp.append(i)
+        #print(magyartmp)
+        sum_m=len(magyartmp)
+        print(sum_m)
+        sum_a=len(angoltmp)
+        print(sum_a)
+
+
+
+
+
+
+
+
+
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl.close()
+
+def feladat_26(fajl1,fajl2):
+    try:
+        fajl1=open(fajl1,mode="r")
+        fajl2=open(fajl2,mode="r")
+        fajl3=open("ki.txt",mode="w")
+        li=[]
+        li2=[]
+        for sor in fajl1:
+            if sor=="":
+                break
+            sor=sor.strip()
+            li.append(sor)
+
+        print(li)
+        for sor in fajl2:
+            if sor=="":
+                break
+            sor=sor.strip()
+            li2.append(sor)
+        print(li2)
+        elso=len(li)
+        masodik=len(li2)
+        print(elso,masodik)
+
+        fajl3.write("%d %d \n" %(elso, masodik))
+        for i in li:
+            if i not in li2:
+                fajl3.write("%s \n" %i)
+
+
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl1.close()
+        fajl2.close()
+        fajl3.close()
 
 
 def main():
@@ -487,7 +621,10 @@ def main():
 
     feladat_5(101)
     feladat_23()
-
+# 5. pull
+    feladat_24()
+    feladat_25()
+    feladat_26("be.txt", "be2.txt")
 if __name__ == '__main__':
     main()
 
